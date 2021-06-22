@@ -40,7 +40,7 @@ public class Quiz05 {
 			switch (num) {
 			
 			case 0:
-				System.out.println("프로그램이 종료 됩니다.");
+				System.out.println("프로그램이 종료 되었습니다.");
 				run=false;
 				break;
 				
@@ -50,7 +50,7 @@ public class Quiz05 {
 				System.out.print("이름을 입력하세요");
 				name=sc.next();
 				System.out.print("포인트를 입력하세요");
-				point=sc.nextInt();
+				point=sc.nextInt();				
 				System.out.print("타입을 입력하세요 0 : 일반 , 1 : 관리자");
 				type=sc.nextInt();
 				System.out.print("이메일을 입력하세요");
@@ -59,7 +59,6 @@ public class Quiz05 {
 				
 				conn=MyConnection.getConnection();			
 				ps=conn.prepareStatement(sql);			
-				//rs=ps.executeQuery();
 				ps.setString(1, name);
 				ps.setInt(2, point);
 				ps.setInt(3, type);
@@ -98,7 +97,8 @@ public class Quiz05 {
 						//System.out.println("회원 번호 :" +memNO); 회원 번호 나옴
 						
 						}else {
-							System.out.println("로그인 실패"); //??? console 창에 안나옴
+							System.out.println("로그인 실패, 로그인을 다시 해주세요"); //??? console 창에 안나옴
+							break;
 					
 					}
 					
@@ -127,7 +127,6 @@ public class Quiz05 {
 						int pd_price = rs.getInt("pd_price");
 						
 						
-						
 						System.out.println("상품 번호 : "+ pd_no);
 						System.out.println("상품 이름 : "+ pd_name);
 						System.out.println("상품 가격 : "+ pd_price);
@@ -152,8 +151,6 @@ public class Quiz05 {
 				pdNO=sc.nextInt();
 				
 				
-				
-				
 				try {
 					conn=MyConnection.getConnection();			
 					ps=conn.prepareStatement(sql);	
@@ -167,15 +164,15 @@ public class Quiz05 {
 				}catch (Exception e) {
 					e.printStackTrace();
 				}finally {
+					MyConnection.close(conn, ps);
 					
 				}
 	
 				break;
+				
 			case 5: //내 장바구니 보기
-				sql="SELECT * FROM cart WHERE mem_no = ?";
-				System.out.println("장바구에 찾을 회원 번호 입력");
-				
-				
+				sql="select product.pd_name	from product left join cart on product.pd_no = cart.pd_no where mem_no=?;";
+
 				try {
 					conn=MyConnection.getConnection();
 					ps=conn.prepareStatement(sql);
@@ -183,21 +180,21 @@ public class Quiz05 {
 					rs=ps.executeQuery();
 					while(rs.next()) { //상품 번호 출력
 						
-						int pd_no = rs.getInt("pd_no");				
-					    System.out.print(pd_no + " ");
+						String pd_name=rs.getString("pd_name");
+						System.out.print("내 장바구니 상품 : ");
+						System.out.println(pd_name);
 					    
 					}
 					System.out.println();
 					
-					
 				} catch (SQLException e) {
 					
 					e.printStackTrace();
-				}	
-				
-				
+				}finally {
+					MyConnection.close(conn,ps,rs);
+				}
+			
 				break;
-				
 				
 			default:
 				break;
