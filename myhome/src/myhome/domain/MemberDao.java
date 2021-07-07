@@ -78,9 +78,12 @@ public class MemberDao implements Dao<MemberDto>{
 		return list;
 		
 	}
+	
+
+		
 	@Override
 	public boolean update(MemberDto t) {
-		String sql="UPDATE member SET username=?, nickname=? WHERE no=?";
+		String sql="UPDATE member SET username=?, nickname=?  WHERE no=?";
 		boolean result = false;
 		try {
 			conn=getConnection();
