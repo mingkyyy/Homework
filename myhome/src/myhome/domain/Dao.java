@@ -12,6 +12,7 @@ public interface Dao<T extends Dto> {
 	
 	T select(int no);
 	List<T> selectAll();
+	
 	boolean update(T t);
 	boolean insert(T t);
 	boolean delete(int no); 

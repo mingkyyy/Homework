@@ -79,7 +79,27 @@ public class MemberDao implements Dao<MemberDto>{
 		
 	}
 	
-
+	public int logincheck(String username, String password) {
+		int result=0;
+		String sql= "SELECT * FROM member WHERE username=?";
+		try {
+			conn=getConnection();
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, username);
+			rs=ps.executeQuery();
+			if(rs.next()) {
+				if(rs.getString("password").equals(password)) {
+					 result= 1;
+				}else
+					result = 0;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(conn, ps, rs);
+		}
+		return result;
+			}
 		
 	@Override
 	public boolean update(MemberDto t) {

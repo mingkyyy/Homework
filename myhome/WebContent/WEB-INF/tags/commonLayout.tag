@@ -35,10 +35,10 @@
 	 	<div class="collapse navbar-collapse" id="nav-items">
 	 		<ul class="navbar-nav">
 	 			<li class = "nav-item">
-	 				<a class="nav-link active" href="#">Login</a>
+	 				<a class="nav-link active" href="/myhome/view/member/login.jsp">Login</a>
  				</li>
  				<li class = "nav-item">
-	 				<a class="nav-link " href="#">Join</a>
+	 				<a class="nav-link " href="/myhome/view/member/join.jsp">Join</a>
  				</li>
  				<li class = "nav-item">
 	 				<a class="nav-link " href="#">Logout</a>
