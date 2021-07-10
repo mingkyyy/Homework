@@ -44,7 +44,7 @@
 	 				<a class="nav-link " href="#">Logout</a>
  				</li>
  				<li class = "nav-item">
-	 				<a class="nav-link " href="#">MyPage</a>
+	 				<a class="nav-link " href="/myhome/view/member/mypage_login.jsp">MyPage</a>
  				</li>
  				<li class = "nav-item">
 	 				<a class="nav-link " href="#">Board</a>
