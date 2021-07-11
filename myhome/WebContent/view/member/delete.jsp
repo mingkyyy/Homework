@@ -14,6 +14,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2><%= result ? "삭제 완료!" :"삭제 실패.." %></h2>
+	<h2><%= result ? "삭제 완료!" :"삭제 실패" %></h2>
 </body>
 </html>
