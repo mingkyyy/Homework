@@ -31,7 +31,7 @@
 </head>
 <body>
 	<script>
-		alert("<%= message %>");
+		
 		location.href='/myhome/view/member/login.jsp'; 
 	</script>
 	
