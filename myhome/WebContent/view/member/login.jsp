@@ -6,8 +6,10 @@
 	<div class="card mx-auto border-light bg-dark" style="width: 28rem;">
 		<p class="card-header display-5 lead text-center">로그인</p>
 		<div class="card-body">
-			<form class="cart-text" id="login-form" action="login_result.jsp"
-					method="post">
+			<form class="cart-text" id="login-form" action="login_logic.do"
+					method="post"> 
+					
+			<!-- action : http://127.0.0.1:8080/myhome/view/member/login_logic.do -->
 			<div class="form-group">
 				<input type="text" class="form-control needs-validation"
 							id="username" name="username" placeholder="Username">

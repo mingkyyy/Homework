@@ -26,7 +26,7 @@
 	 
 	 <h1 class="display-2">My Home!</h1>
 	 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-	 	<a id="current-user" class="navbar-brand">로그인하세요.</a>
+	 	<a id="current-user" class="navbar-brand">${currentDto != null ? currentDto.nickname : '로그인 하세요' }</a>
 	 	<button class="navbar-toggler" type="button"
 	 			data-toggle="collapse" data-target="#nav-items">
 	 		<span class="navbar-toggler-icon"></span>		
@@ -44,7 +44,7 @@
 	 				<a class="nav-link " href="#">Logout</a>
  				</li>
  				<li class = "nav-item">
-	 				<a class="nav-link " href="/myhome/view/member/mypage_login.jsp">MyPage</a>
+	 				<a class="nav-link " href="/myhome/view/member/mypage.jsp">MyPage</a>
  				</li>
  				<li class = "nav-item">
 	 				<a class="nav-link " href="#">Board</a>
@@ -53,7 +53,7 @@
 	 				<a class="nav-link " href="#">Files</a>
  				</li>
  				<li class = "nav-item">
-	 				<a class="nav-link " href="#">Manage</a>
+	 				<a class="nav-link " href="/myhome/view/member/manage.jsp">Manage</a>
  				</li>
 	 		</ul>
 	 	</div>
@@ -79,3 +79,6 @@
 
 </body>
 </html>
+
+
+

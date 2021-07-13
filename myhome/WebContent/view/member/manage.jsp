@@ -1,15 +1,9 @@
-<%@page import="java.util.List"%>
 <%@page import="myhome.domain.MemberDto"%>
+<%@page import="java.util.List"%>
 <%@page import="myhome.domain.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   
-   
- <%
- 	MemberDao dao = MemberDao.getInstance();
- 	List<MemberDto> list = dao.selectAll();
- 
- %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,29 +11,28 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<table border="1">
-	<tr>
-		<td>회원번호</td>
-		<td>회원아이디</td>
-		<td>가입날짜</td>
-		<td>회원유형</td>
-		<td>회원탈퇴</td>
-	</tr>
-	
-	<tr>
-	<%  for(MemberDto dto : list){%>
-		<td><%=dto.getNo() %></td>
-		<td><%=dto.getUsername() %></td>
-		<td><%=dto.getRegdate() %></td>
-		<td><%=dto.getType() %></td>
-		<%if(dto.getType()==1){ %>
-		<td><a href="/myhome/view/member/manage_delete.jsp?no=<%=dto.getNo() %>">강퇴</a></td>
-		<% } %>
-	</tr>
-	<% } %>
-	
-
-</table>
+   <table border = "1">
+      <tr>
+         <th>회원번호</th>
+         <th>아이디</th>
+         <th>등록일자</th>
+         <th>닉네임</th>
+         <th>유형</th>
+      </tr>
+      <% for(MemberDto dto : (List<MemberDto>)session.getAttribute("memberList")) {%>
+         <tr>
+            <td><%=dto.getNo() %></td>
+            <td><%=dto.getUsername() %></td>
+            <td><%=dto.getRegdate() %></td>
+            <td><%=dto.getNickname() %></td>
+            <td><%=dto.getType() == 0 ? "관리자" : "일반회원" %>
+            <td><a href="/myhome/view/member/manage_delete.jsp?no=<%=dto.getNo() %>">강퇴</a></td>         
+         </tr>
+      <%} %>
+   </table>
 </body>
 </html>
+
+
+
+
